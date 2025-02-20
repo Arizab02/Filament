@@ -70,10 +70,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Permission::class);
     }
-    // public function santriFamiliy()
-    // {
-    //     return $this->hasMany(Santri_familiy::class);
-    // }
+    public function santriFamiliy()
+    {
+        return $this->hasMany(Santri_Family::class);
+    }
+
     public function news()
     {
         return $this->hasMany(News::class);

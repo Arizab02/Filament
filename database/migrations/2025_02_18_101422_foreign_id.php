@@ -46,6 +46,9 @@ return new class extends Migration
             $table->foreign('santri_id')->references('id')->on('users');
             $table->foreign('attachment_id')->references('id')->on('attachments');
         });
+        Schema::table('santri__families', function (Blueprint $table) {
+            $table->foreign('santri_id')->references('id')->on('users');
+        });
 
     }
 

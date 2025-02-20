@@ -14,6 +14,7 @@ use App\Models\Kelas;
 use App\Models\News;
 use App\Models\Permission;
 use App\Models\Rapot_Santri;
+use App\Models\Santri_Family;
 use App\Models\Subject;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -40,6 +41,8 @@ class DatabaseSeeder extends Seeder
         $Financial_RecordData = Financial_Record::factory(50)->create();
         $AttachmentData = Attachment::factory(50)->create();
         $Attachment_Santri = Attachment_Santri::factory(50)->create();
+        $SantriFamiliy = Santri_Family::factory(50)->create();
+
         foreach($UserData as $user)
         {
             $user->update([
@@ -88,11 +91,23 @@ class DatabaseSeeder extends Seeder
                 'deputy_id'          => User::all()->random()->id,
             ]);
         }
-        foreach($Attachment_Santri as $santri)
+        foreach($SantriFamiliy as $santri)
         {
             $santri->update([
                 'santri_id'          => User::all()->random()->id,
-                'attachment_id'          => Attachment::all()->random()->id,
+            ]);
+        }
+        foreach($PermissionData as $Permission)
+        {
+            $Permission->update([
+                'user_id'          => User::all()->random()->id,
+            ]);
+        }
+        foreach($AssessmentData as $assessment)
+        {
+            $assessment->update([
+                'user_id'          => User::all()->random()->id,
+                'subject_id'          => Subject::all()->random()->id,
             ]);
         }
 
