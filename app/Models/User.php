@@ -86,10 +86,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Financial_Record::class);
     }
-    public function kelasSantri()
-    {
-        return $this->hasMany(kelasSantri::class);
-    }
+    // public function kelasSantri()
+    // {
+    //     return $this->hasMany(kelasSantri::class);
+    // }
 
     /**
      * Get the attributes that should be cast.
