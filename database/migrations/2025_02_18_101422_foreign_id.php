@@ -57,24 +57,39 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Hapus foreign key dari tabel child terlebih dahulu
+        Schema::table('attachment__santris', function (Blueprint $table) {
+            $table->dropForeign(['attachment_id']);
+        });
+
         Schema::table('rapot__santris', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['class_id']);
+            $table->dropForeign(['departement_id']);
+            $table->dropForeign(['program_stage_id']);
         });
         
         Schema::table('attendances', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['activity_id']);
         });
+
         Schema::table('permissions', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
+
         Schema::table('financial__records', function (Blueprint $table) {
             $table->dropForeign(['accounting_id']);
         });
+
         Schema::table('assessments', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['subject_id']);
         });
+
         Schema::table('news', function (Blueprint $table) {
             $table->dropForeign(['author_id']);
         });

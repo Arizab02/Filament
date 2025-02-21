@@ -30,6 +30,7 @@ class UserFactory extends Factory
         return [
             'id'                 => $customId,
             'name'               => fake()->name(),
+            'email'              => fake()->unique()->safeEmail(),
             'password'           => Hash::make('password'),
             'gender'             => fake()->randomElement(['Laki-laki', 'Perempuan']),
             'date_of_birth'      => fake()->date(),

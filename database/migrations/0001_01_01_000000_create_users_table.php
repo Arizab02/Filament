@@ -15,15 +15,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name');
-            $table->enum('gender', ['Laki-laki', 'Perempuan']);
-            $table->date('date_of_birth');
-            $table->string('phone', 20);
-            $table->text('address');
-            $table->integer('generation');
-            $table->string('entry_date');
+            $table->string('email')->unique();
+            $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->text('address')->nullable();
+            $table->integer('generation')->nullable();
+            $table->string('entry_date')->nullable();
             $table->string('graduate_date')->nullable();
             $table->string('status_graduate')->nullable();
-            $table->unsignedBigInteger('class_id')->constrained('classes')->nullable();
+            $table->unsignedBigInteger('class_id')->nullable();
             $table->enum('role', ['Santri', 'Ustadz', 'Staff', 'Pengurus'])->nullable();
             $table->unsignedBigInteger('departement_id')->nullable();
             $table->unsignedBigInteger('program_stage_id')->nullable();
@@ -41,7 +42,7 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            //$table->foreignId('user_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
