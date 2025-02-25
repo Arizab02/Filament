@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('financial__records', function (Blueprint $table) {
             $table->id();
-            $table->string('accounting_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->enum('category', ['Pemasukan', 'Pengeluaran']);
             $table->text('description');
             $table->enum('transaction_type', ['Deposit', 'Withdrawal']);

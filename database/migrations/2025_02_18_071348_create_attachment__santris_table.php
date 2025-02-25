@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attachment__santris', function (Blueprint $table) {
             $table->id();
-            $table->string('santri_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->unsignedBigInteger('attachment_id')->constrained('attachments')->nullable();
             $table->timestamps();
         });

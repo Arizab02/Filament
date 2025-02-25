@@ -18,7 +18,7 @@ class Financial_RecordFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'accounting_id'    => User::all()->random()->id,
+            // 'user_id'    => User::all()->random()->id,
             'category'         => $this->faker->randomElement(['Pemasukan', 'Pengeluaran']),
             'description'      => $this->faker->sentence,
             'transaction_type' => $this->faker->randomElement(['Deposit', 'Withdrawal']),

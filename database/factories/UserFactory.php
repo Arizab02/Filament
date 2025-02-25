@@ -40,6 +40,7 @@ class UserFactory extends Factory
             'entry_date'         => fake()->date(),
             'graduate_date'      => fake()->optional()->date(),
             'status_graduate'    => fake()->optional()->word(),
+            'no_ktp'             => fake()->numerify('##########'),
             'role'               => $role,
             // 'class_id'           => \App\Models\Kelas::all()->random()->id,
             // 'department_id'      => \App\Models\Departement::all()->random()->id,

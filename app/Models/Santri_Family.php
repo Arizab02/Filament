@@ -12,7 +12,7 @@ class Santri_Family extends Model
 
     protected $fillable = [
         'id',
-        'santri_id',
+        'user_id',
         'no_kk',
         'father_name',
         'father_job',

@@ -12,42 +12,42 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('rapot__santris', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('class_id')->references('id')->on('kelas');
-            $table->foreign('departement_id')->references('id')->on('departements');
-            $table->foreign('program_stage_id')->references('id')->on('program__stages');
+            $table->foreign('class_id')->references('id')->on('kelas')->onDelete('set null');
+            $table->foreign('departement_id')->references('id')->on('departements')->onDelete('set null');
+            $table->foreign('program_stage_id')->references('id')->on('program__stages')->onDelete('set null');
         });
         
         Schema::table('attendances', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('activity_id')->references('id')->on('activities');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('set null');
         });
         Schema::table('permissions', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
         Schema::table('financial__records', function (Blueprint $table) {
-            $table->foreign('accounting_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
         Schema::table('assessments', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null');
         });
         Schema::table('news', function (Blueprint $table) {
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
 
         Schema::table('departements', function (Blueprint $table) {
-            $table->foreign('leader_id')->references('id')->on('users');
-            $table->foreign('deputy_id')->references('id')->on('users');
+            $table->foreign('leader_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('deputy_id')->references('id')->on('users')->onDelete('set null');
         });
         Schema::table('attachment__santris', function (Blueprint $table) {
-            $table->foreign('santri_id')->references('id')->on('users');
-            $table->foreign('attachment_id')->references('id')->on('attachments');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('attachment_id')->references('id')->on('attachments')->onDelete('set null');
         });
         Schema::table('santri__families', function (Blueprint $table) {
-            $table->foreign('santri_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
 
     }
@@ -82,7 +82,7 @@ return new class extends Migration
         });
 
         Schema::table('financial__records', function (Blueprint $table) {
-            $table->dropForeign(['accounting_id']);
+            $table->dropForeign(['user_id']);
         });
 
         Schema::table('assessments', function (Blueprint $table) {
@@ -91,7 +91,7 @@ return new class extends Migration
         });
 
         Schema::table('news', function (Blueprint $table) {
-            $table->dropForeign(['author_id']);
+            $table->dropForeign(['user_id']);
         });
 
         Schema::table('departements', function (Blueprint $table) {

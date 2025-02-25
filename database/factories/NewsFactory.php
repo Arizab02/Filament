@@ -18,7 +18,7 @@ class NewsFactory extends Factory
     public function definition(): array
     {
         return [
-            'author_id'  => User::all()->random()->id,
+            // 'user_id'  => User::all()->random()->id,
             'title'      => $this->faker->sentence,
             'content'    => $this->faker->sentence,
             'created_at' => $this->faker->dateTime,

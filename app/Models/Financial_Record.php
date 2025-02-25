@@ -11,11 +11,11 @@ class Financial_Record extends Model
     use HasFactory;
 
     protected $fillable = [
-        'accounting_id', 'category', 'description', 'transaction_type', 'amount', 'transaction_date'
+        'user_id', 'category', 'description', 'transaction_type', 'amount', 'transaction_date'
     ];
 
     public function accounting()
     {
-        return $this->belongsTo(User::class, 'accounting_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

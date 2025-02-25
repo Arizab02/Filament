@@ -30,17 +30,17 @@ class DatabaseSeeder extends Seeder
         $KelasData = Kelas::factory(50)->create();
         $Program_StageData = Program_Stage::factory(50)->create();
         $DepartementData = Departement::factory(50)->create();
+        $NewsData = News::factory(50)->create();
+        $Attachment_Santri = Attachment_Santri::factory(50)->create();
         $UserData = User::factory(50)->create();
         $SubjectData = Subject::factory(50)->create();
         $AssessmentData = Assessment::factory(50)->create();
         $PermissionData = Permission::factory(50)->create();
         $ActivitiesData = Activities::factory(50)->create();
         $AttendanceData = Attendance::factory(50)->create();
-        $NewsData = News::factory(50)->create();
         $Rapot_SantriData = Rapot_Santri::factory(50)->create();
         $Financial_RecordData = Financial_Record::factory(50)->create();
         $AttachmentData = Attachment::factory(50)->create();
-        $Attachment_Santri = Attachment_Santri::factory(50)->create();
         $SantriFamiliy = Santri_Family::factory(50)->create();
 
         foreach($UserData as $user)
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         foreach($NewsData as $news)
         {
             $news->update([
-                'author_id'          => User::all()->random()->id,
+                'user_id'          => User::all()->random()->id,
             ]);
         }
         foreach($Rapot_SantriData as $rapot)
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
         foreach($SantriFamiliy as $santri)
         {
             $santri->update([
-                'santri_id'          => User::all()->random()->id,
+                'user_id'          => User::all()->random()->id,
             ]);
         }
         foreach($PermissionData as $Permission)

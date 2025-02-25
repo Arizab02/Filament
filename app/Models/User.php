@@ -14,10 +14,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements AuthMustVerifyEmail// implements FilamentUser
+class User extends Authenticatable // implements AuthMustVerifyEmail// implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, MustVerifyEmail;
+    use HasFactory, Notifiable; //MustVerifyEmail;
 
     protected $primaryKey = 'id';
     protected $keyType = 'string';
@@ -41,7 +41,7 @@ class User extends Authenticatable implements AuthMustVerifyEmail// implements F
         'entry_date',
         'graduate_date',
         'status_graduate',
-        'class_id',
+        'kelas_id',
         'department_id',
         'program_stage_id',
         'password',
@@ -79,9 +79,9 @@ class User extends Authenticatable implements AuthMustVerifyEmail// implements F
     {
         return $this->hasMany(Permission::class);
     }
-    public function santriFamiliy()
+    public  function santriFamily()
     {
-        return $this->hasMany(Santri_Family::class);
+        return $this->hasOne(Santri_Family::class);
     }
 
     public function news()

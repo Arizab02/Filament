@@ -11,11 +11,11 @@ class News extends Model
     use HasFactory;
 
     protected $fillable = [
-        'author_id', 'title', 'content'
+        'user_id', 'title', 'content'
     ];
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

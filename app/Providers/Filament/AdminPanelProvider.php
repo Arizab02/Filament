@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -28,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin') //  ini buat nama path nya di url 
+            ->spa()
             ->login()
             ->registration() //ini untu kmembuat sign-up
             ->passwordReset() // untuk panel reset password 
@@ -60,6 +62,17 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->defaultThemeMode(ThemeMode::Dark)
+            // ->spa()
+            ->sidebarWidth('15rem')
+            ->maxContentWidth('25rem')
+            ->sidebarCollapsibleOnDesktop(true)
+            ->sidebarFullyCollapsibleOnDesktop(true)
+            ->brandName('Brand.com')
+            ->brandLogo(asset('images/new-php-logo.png'))
+            ->darkModeBrandLogo(asset('images/new-php-logo.png'))
+            ->favicon(asset('images/php-logo-bigger.png'))
+            ->brandLogoHeight('2rem')
 
             // warna-warna tambahan
 
@@ -70,6 +83,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
                 'success' => Color::Green,
                 'warning' => Color::Orange,
+                'icon' => Color::Zinc,
                 // Warna tambahan
                 'slate' => Color::Slate,
                 'zinc' => Color::Zinc,
@@ -93,7 +107,7 @@ class AdminPanelProvider extends PanelProvider
                 'pink' => Color::Pink,
                 'rose' => Color::Rose,
             ])
-
+            ->favicon(asset('images/favicon.png'))
             ->plugins([
                 EmailVerificationAlertPlugin::make()
                     ->color('red')

@@ -20,11 +20,12 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('phone', 20)->nullable();
             $table->text('address')->nullable();
+            $table->bigInteger('no_ktp')->nullable();
             $table->integer('generation')->nullable();
             $table->string('entry_date')->nullable();
             $table->string('graduate_date')->nullable();
             $table->string('status_graduate')->nullable();
-            $table->unsignedBigInteger('class_id')->nullable();
+            $table->unsignedBigInteger('kelas_id')->nullable();
             $table->enum('role', ['Santri', 'Ustadz', 'Staff', 'Pengurus'])->nullable();
             $table->unsignedBigInteger('departement_id')->nullable();
             $table->unsignedBigInteger('program_stage_id')->nullable();

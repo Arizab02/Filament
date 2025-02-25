@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('santri__families', function (Blueprint $table) {
             $table->id();
-            $table->string('santri_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->string('no_kk')->nullable();
             $table->string('father_name')->nullable();
             $table->string('father_job')->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Constraint foreign key
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
